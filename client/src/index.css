@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+    --color-dark-green: #0a4226;
+    --font-sans: "Macan", "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+@layer components {
+    .container {
+        @apply max-w-360 mx-auto;
+    }
+
+    .title {
+        @apply text-xl md:text-2xl text-gray-500 font-bold mb-5
+    }
+
+    .field {
+        @apply bg-gray-50 border-gray-300 text-sm rounded-lg focus:ring-blue-500 block w-full p-2.5 focus:border-blue-500 disabled:bg-gray-200 disabled:cursor-not-allowed
+    }
+
+    .form-button {
+        @apply py-2.5 px-5 rounded-lg text-white bg-black hover:bg-black/90 font-medium text-sm w-full sm:w-auto
+    }
+
+    .header-link {
+        @apply px-5 py-2 hover:bg-gray-200
+    }
+
+    .warning {
+        @apply py-10 px-5 text-lg rounded-lg bg-orange-500/50 text-white text-center my-40
+    }
+
+    .layout {
+        @apply grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-5
+    }
+
+    .button {
+        @apply p-2 rounded-md text-white
+    }
+}
+
+@layer base {
+
+    button,
+    a {
+        @apply cursor-pointer transition duration-300;
+    }
+
+    button {
+        @apply active:scale-95 hover:brightness-85;
+    }
+}
+
+/* Toggle */
+
+/* From Uiverse.io by gharsh11032000 */
+/* The switch - the box around the slider */
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: ghostwhite;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    right: 0.3em;
+    bottom: 0.3em;
+    transform: translateX(150%);
+    background-color: #59d102;
+    border-radius: inherit;
+    transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.slider:after {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    left: 0.3em;
+    bottom: 0.3em;
+    background-color: #cccccc;
+    border-radius: inherit;
+    transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.switch input:focus+.slider {
+    box-shadow: 0 0 1px #59d102;
+}
+
+.switch input:checked+.slider:before {
+    transform: translateY(0);
+}
+
+.switch input:checked+.slider::after {
+    transform: translateX(-150%);
+}

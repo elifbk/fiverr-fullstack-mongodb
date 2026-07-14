@@ -1,0 +1,42 @@
+import React, { type FC, type SubmitEvent } from "react";
+import { gigInputs } from "../../utils/constants";
+import Field from "../../components/form/field";
+import { useCreateGig } from "../../service/gig";
+
+const AddGig: FC = () => {
+  const { isPending, mutate } = useCreateGig();
+
+  const handleSubmit = (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    // formdaki verilerden bir formData nesnesi oluşturuyorum
+    const formData = new FormData(e.target);
+
+    mutate(formData);
+  };
+
+  return (
+    <div className="container max-md:p-5 py-5">
+      <h1 className="title">Create New Service</h1>
+
+      <form onSubmit={handleSubmit}>
+        <div className="grid md:grid-cols-2 gap-x-10">
+          {gigInputs.map((item, key) => (
+            <Field {...item} key={key} />
+          ))}
+        </div>
+
+        <div className="flex md:justify-center my-5">
+          <button
+            disabled={isPending}
+            className="form-button bg-green-600 w-1/2 max-md:w-full"
+          >
+            Create
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default AddGig;
