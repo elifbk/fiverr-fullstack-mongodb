@@ -1,0 +1,14 @@
+# Environment files
+client/.env
+api/.env
+
+# veya daha genel
+**/.env
+**/.env.*
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
